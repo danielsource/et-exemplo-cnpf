@@ -65,7 +65,18 @@ int main(int argc, char **argv)
     }
     /* Se usuário digitar 'e', exiba exemplos da calculadora. */
     else if (strcmp(expression, "e") == 0) {
-      puts("<A Fazer>");
+      putchar('\n');
+      puts("Expressão convencional: 2 + 2");
+      puts("Expressão 'cnpf':       2 2 +");
+      putchar('\n');
+      puts("Expressão convencional: (4 + 6) / 2");
+      puts("Expressão 'cnpf':       4 6 + 2 /");
+      putchar('\n');
+      puts("Expressão convencional: ((4 * 2) - (5 * 2)) / (2 * -1)");
+      puts("Expressão 'cnpf':       4 2 * 5 2 * - 2 -1 * /");
+      putchar('\n');
+      puts("Note que na notação pós-fixada não é usado parênteses.");
+      puts("Obs: neste programa, espaços entre operandos ou operadores são obrigatórios!\n");
       continue;
     }
 
