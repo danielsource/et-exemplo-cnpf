@@ -6,24 +6,33 @@
 /* Macro para verificar se caractere é um dígito. */
 #define IS_DIGIT(c) ((c) >= '0' && (c) <= '9')
 
+static bool calc_add2_(void)
+{
+  long x, y;
+  if (!calc_pop(&x) || !calc_pop(&y)) {
+    return false;
+  }
+  return calc_push(x + y);
+}
+
 /* A função 'calc' recebe uma cadeia de caracteres de uma expressão e um
  * ponteiro para um inteiro usado para armazenar o valor do cálculo.
  * Retorna 'true' se realizar o cálculo corretamente e 'false' ao encontrar
  * algum erro de sintaxe na expressão ou divisão por zero.
  *
  * A expressão recebida por 'calc' segue vagamente essa gramática em BNF:
- *   <expression> ::= <integer>    " "+ <integer>    " "+ <operator> |
- *                    <integer>    " "+ <expression> " "+ <operator> |
- *                    <expression> " "+ <integer>    " "+ <operator> |
- *                    <expression> " "+ <expression> " "+ <operator>
- *   <operator>   ::= "+" | "-" | "*" | "/"
- *   <integer>    ::= "-"? ("0" | [1-9] [0-9]*)
+ *   expression ::= integer    " "+ integer    " "+ operator |
+ *                  integer    " "+ expression " "+ operator |
+ *                  expression " "+ integer    " "+ operator |
+ *                  expression " "+ expression " "+ operator
+ *   operator   ::= "+" | "-" | "*" | "/"
+ *   integer    ::= "-"? ("0" | [1-9] [0-9]*)
  */
-bool calc(const char *expression, int *value)
+bool calc(const char *expression, long *value)
 {
   const char *s;
   char *n_end;
-  int n;
+  long n;
 
   /* Comece com a pilha na posição inicial (vazia). */
   calc_top = -1;
@@ -61,9 +70,9 @@ bool calc(const char *expression, int *value)
       continue;
     }
 
-    /* Tente processar um operador: */
+    /* Tente computar uma operação: */
     switch (s[0]) {
-    case '+': if (!0 /* A Fazer */) return false; break;
+    case '+': if (!calc_add2_()) return false; break;
     case '-': if (!0 /* A Fazer */) return false; break;
     case '*': if (!0 /* A Fazer */) return false; break;
     case '/': if (!0 /* A Fazer */) return false; break;
@@ -73,5 +82,11 @@ bool calc(const char *expression, int *value)
     ++s;
   }
 
-  return true;
+  /* Finalize com erro se a pilha não estiver com apenas um elemento: */
+  if (calc_top != 0) {
+    return false;
+  }
+
+  /* Tente retirar o último elemento da pilha, passando o valor para 'value': */
+  return calc_pop(value);
 }

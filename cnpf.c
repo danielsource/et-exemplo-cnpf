@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 {
   char *expression;
   int expression_length;
-  int value;
+  long value;
   int i;
 
   setlocale(LC_ALL, "pt_BR");
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 
     /* Execute a calculadora 'calc': */
     if (calc(expression, &value)) {
-      printf("%d\n", value);
+      printf("%ld\n", value);
     } else {
       puts("<Erro de sintaxe>");
     }
