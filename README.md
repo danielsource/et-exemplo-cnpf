@@ -15,11 +15,12 @@ Veja os exemplos ao executar o programa com `./cpnf` ou `.\cnpf.exe` dependendo 
 ## Coisas a serem feitas
 
 1. Implementar [a calculadora](calc.c).
-    1. Branch `feat/adicao`
-    2. Branch `feat/subtracao`
+    1. ~~Branch `feat/adicao`~~
+    2. ~~Branch `feat/subtracao`~~
     3. Branch `feat/multiplicacao`
     4. Branch `feat/divisao`
 2. Testar o código, inclusive usando o depurador.
+3. Adicionar exemplos!
 
 * Outros:
     * Fazer commits com mensagens descritivas.
@@ -29,4 +30,4 @@ Veja os exemplos ao executar o programa com `./cpnf` ou `.\cnpf.exe` dependendo 
 ## Desenvolvedores (grupo 5, subgrupo 0)
 
 - [Daniel de Lima Franceschetti](https://github.com/danielsource)
-- ...
+- ... (ninguém mais apareceu)
