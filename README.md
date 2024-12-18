@@ -22,11 +22,6 @@ Veja os exemplos ao executar o programa com `./cpnf` ou `.\cnpf.exe` dependendo 
 2. Testar o código, inclusive usando o depurador.
 3. Adicionar exemplos!
 
-* Outros:
-    * Fazer commits com mensagens descritivas.
-    * Utilizar _issues_ para reportar erros.
-    * Utilizar a funcionalidade de pull request do GitHub.
-
 ## Desenvolvedores (grupo 5, subgrupo 0)
 
 - [Daniel de Lima Franceschetti](https://github.com/danielsource)
