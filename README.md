@@ -18,7 +18,7 @@ Veja os exemplos ao executar o programa com `./cpnf` ou `.\cnpf.exe` dependendo 
     1. Branch `feat/adicao`
     2. Branch `feat/subtracao`
     3. Branch `feat/multiplicacao`
-    4. Branch `feat/divicao`
+    4. Branch `feat/divisao`
 2. Testar o código, inclusive usando o depurador.
 
 * Outros:
@@ -26,7 +26,7 @@ Veja os exemplos ao executar o programa com `./cpnf` ou `.\cnpf.exe` dependendo 
     * Utilizar _issues_ para reportar erros.
     * Utilizar a funcionalidade de pull request do GitHub.
 
-## Equipe de desenvolvimento
+## Desenvolvedores (grupo 5, subgrupo 0)
 
-- [danielsource](https://github.com/danielsource)
+- [Daniel de Lima Franceschetti](https://github.com/danielsource)
 - ...
