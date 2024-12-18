@@ -8,7 +8,7 @@ const char *const banner =
   "(também conhecida como 'Reverse Polish\n"
   "Notation').\n"
   "=======================================\n"
-  "Aperte q para sair | Press q to exit"
+  "DIGITE 'q' PARA SAIR | DIGITE 'e' PARA EXEMPLOS"
 ;
 
 #include <stdio.h>
@@ -25,7 +25,9 @@ const char *const banner =
 int main(int argc, char **argv)
 {
   char *expression;
+  int expression_length;
   int value;
+  int i;
 
   setlocale(LC_ALL, "pt_BR");
 
@@ -39,11 +41,31 @@ int main(int argc, char **argv)
   
   while (true) {
     /* Obtenha a expressão aritmética do usuário. */
-    expression = get_user_line();
-    
+    expression = get_user_line(&expression_length);
+
+    /* Remova espaços desnecessários no *início* da expressão. */
+    while (expression[0] == ' ') {
+      ++expression;
+      --expression_length;
+    }
+
+    /* Remova espaços desnecessários no *final* da expressão. */
+    for (i = expression_length-1; expression[i] == ' '; --i) {
+      expression[i] = '\0';
+      --expression_length;
+    }
+
+    /* Se usuário não digitar nada, prossiga para a próxima leitura. */
+    if (expression_length == 0)
+      continue;
     /* Se usuário digitar 'q', finalize o programa (quit). */
-    if (strcmp(expression, "q") == 0) {
+    else if (strcmp(expression, "q") == 0) {
       break;
+    }
+    /* Se usuário digitar 'e', exiba exemplos da calculadora. */
+    else if (strcmp(expression, "e") == 0) {
+      puts("<A Fazer>");
+      continue;
     }
 
     /* Execute a calculadora 'calc': */

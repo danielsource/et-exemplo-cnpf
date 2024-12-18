@@ -3,8 +3,6 @@
 
 #include "cnpf.h"
 
-static char buffer[BUFFER_SIZE];
-
 /* Imprima mensagem de erro e finalize a execução com código de falha (1). */
 void fatal_error(const char *message)
 {
@@ -14,13 +12,14 @@ void fatal_error(const char *message)
 }
 
 /* Obtenha caracteres da linha de entrada. */
-char *get_user_line(void)
+char *get_user_line(int *length)
 {
+  static char buffer[512];
   int i;
   
   fputs("> ", stdout);
   
-  if (fgets(buffer, BUFFER_SIZE, stdin) == NULL) {
+  if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
     fatal_error("fgets() falhou.\n");
   }
   
@@ -32,5 +31,6 @@ char *get_user_line(void)
     }
   }
   
+  *length = i;
   return buffer;
 }

@@ -11,6 +11,5 @@ bool calc_push(int value);
 bool calc_pop(int *value);
 
 /* util.c */
-#define BUFFER_SIZE 512
 void fatal_error(const char *message);
-char *get_user_line(void);
+char *get_user_line(int *length);
