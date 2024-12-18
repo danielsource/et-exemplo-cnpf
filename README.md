@@ -21,7 +21,7 @@ Veja os exemplos ao executar o programa com `./cpnf` ou `.\cnpf.exe` dependendo 
 3. Adicionar exemplos!
 
 * Outros:
-    * ~~Fazer commits com mensagens descritivas.~~
+    * Fazer commits com mensagens descritivas.
     * Utilizar _issues_ para reportar erros.
     * ~~Utilizar a funcionalidade de pull request do GitHub.~~
     * Adicionar a GIF no README.md!
