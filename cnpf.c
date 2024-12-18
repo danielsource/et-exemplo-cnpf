@@ -56,8 +56,9 @@ int main(int argc, char **argv)
     }
 
     /* Se usuário não digitar nada, prossiga para a próxima leitura. */
-    if (expression_length == 0)
+    if (expression_length == 0) {
       continue;
+    }
     /* Se usuário digitar 'q', finalize o programa (quit). */
     else if (strcmp(expression, "q") == 0) {
       break;
