@@ -39,6 +39,9 @@ static bool calc_div2_(void)
   if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
+  if (y == 0) {
+    return false;
+  }
   return calc_push(x / y);
 }
 
