@@ -109,6 +109,11 @@ bool calc(const char *expression, long *value)
     default: /* Finalize com erro em um caractere inesperado: */ return false;
     }
 
+    /* Finalize com erro caso encontre um caractere inesperado depois do operador: */
+    if (s[1] != '\0' && s[1] != ' ') {
+        return false;
+    }
+
     ++s;
   }
 
