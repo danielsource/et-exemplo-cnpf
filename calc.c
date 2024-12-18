@@ -15,6 +15,15 @@ static bool calc_add2_(void)
   return calc_push(x + y);
 }
 
+static bool calc_sub2_(void)
+{
+  long x, y;
+  if (!calc_pop(&x) || !calc_pop(&y)) {
+    return false;
+  }
+  return calc_push(x - y);
+}
+
 /* A função 'calc' recebe uma cadeia de caracteres de uma expressão e um
  * ponteiro para um inteiro usado para armazenar o valor do cálculo.
  * Retorna 'true' se realizar o cálculo corretamente e 'false' ao encontrar
@@ -73,7 +82,7 @@ bool calc(const char *expression, long *value)
     /* Tente computar uma operação: */
     switch (s[0]) {
     case '+': if (!calc_add2_()) return false; break;
-    case '-': if (!0 /* A Fazer */) return false; break;
+    case '-': if (!calc_sub2_()) return false; break;
     case '*': if (!0 /* A Fazer */) return false; break;
     case '/': if (!0 /* A Fazer */) return false; break;
     default: /* Finalize com erro em um caractere inesperado: */ return false;
