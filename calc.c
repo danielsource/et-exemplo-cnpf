@@ -9,7 +9,7 @@
 static bool calc_add2_(void)
 {
   long x, y;
-  if (!calc_pop(&x) || !calc_pop(&y)) {
+  if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
   return calc_push(x + y);
@@ -18,7 +18,7 @@ static bool calc_add2_(void)
 static bool calc_sub2_(void)
 {
   long x, y;
-  if (!calc_pop(&x) || !calc_pop(&y)) {
+  if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
   return calc_push(x - y);
@@ -27,10 +27,19 @@ static bool calc_sub2_(void)
 static bool calc_mul2_(void)
 {
   long x, y;
-  if (!calc_pop(&x) || !calc_pop(&y)) {
+  if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
   return calc_push(x * y);
+}
+
+static bool calc_div2_(void)
+{
+  long x, y;
+  if (!calc_pop(&y) || !calc_pop(&x)) {
+    return false;
+  }
+  return calc_push(x / y);
 }
 
 /* A função 'calc' recebe uma cadeia de caracteres de uma expressão e um
@@ -93,7 +102,7 @@ bool calc(const char *expression, long *value)
     case '+': if (!calc_add2_()) return false; break;
     case '-': if (!calc_sub2_()) return false; break;
     case '*': if (!calc_mul2_()) return false; break;
-    case '/': if (!0 /* A Fazer */) return false; break;
+    case '/': if (!calc_div2_()) return false; break;
     default: /* Finalize com erro em um caractere inesperado: */ return false;
     }
 
