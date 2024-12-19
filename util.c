@@ -18,6 +18,7 @@ char *get_user_line(int *length)
   int i;
   
   fputs("> ", stdout);
+  fflush(stdout);
   
   if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
     fatal_error("fgets() falhou.\n");
