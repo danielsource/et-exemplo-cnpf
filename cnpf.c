@@ -29,7 +29,7 @@ int main(int argc, char **argv)
   long value;
   int i;
 
-  setlocale(LC_ALL, "pt_BR");
+  setlocale(LC_ALL, "");
 
   if (argc == 2 && strcmp(argv[1], "-q") == 0) {
     /* Desativar 'banner' inicial ao passar a opção "-q". */
