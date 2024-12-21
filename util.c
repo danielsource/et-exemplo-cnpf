@@ -16,14 +16,14 @@ char *get_user_line(int *length)
 {
   static char buffer[512];
   int i;
-  
+
   fputs("> ", stdout);
   fflush(stdout);
-  
+
   if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
     fatal_error("fgets() falhou.\n");
   }
-  
+
   /* Remova a "nova linha" do final da cadeia. */
   for (i = 0; buffer[i] != '\0'; ++i) {
     if (buffer[i] == '\n') {
@@ -31,7 +31,7 @@ char *get_user_line(int *length)
       break;
     }
   }
-  
+
   *length = i;
   return buffer;
 }

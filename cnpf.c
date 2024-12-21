@@ -1,15 +1,27 @@
 const char *const banner =
   "cnpf: calculadora em notação pós-fixada\n"
-  "=======================================\n"
-  "'cnpf' é uma simples calculadora de\n"
-  "linha de comando que implementa as 4\n"
-  "operações aritméticas básicas (+ - * /)\n"
-  "em inteiros na notação pós-fixada\n"
-  "(também conhecida como 'Reverse Polish\n"
-  "Notation').\n"
-  "=======================================\n"
+  "==========================================\n"
+  "'cnpf' é uma simples calculadora de linha\n"
+  "de comando que implementa as operações\n"
+  "aritméticas (+ - * / ^ ? ? ? ? ?) em\n"
+  "inteiros na notação pós-fixada (também\n"
+  "(conhecida como 'Reverse Polish Notation).\n"
+  "==========================================\n"
   "DIGITE 'q' PARA SAIR | DIGITE 'e' PARA EXEMPLOS"
 ;
+
+/* SUGESTÃO DE NOVOS OPERADORES:
+ * !: Fatorial         (ex: 5 !     -> 120)
+ * ~: Negação          (ex: 5 ~     -> -5)
+ * #: Raiz quadrada    (ex: 9 #     -> 3)
+ * %: Módulo (resto)   (ex: 10 % 3  -> 1)
+ * <: Menor que        (ex: 3 5 <   -> 1)
+ * >: Maior que        (ex: 3 5 >   -> 0)
+ * =: Igual a          (ex: 7 7 =   -> 1)
+ * @: Média de dois n. (ex: 10 20 @ -> 15)
+ * f: Enésimo n. Fibonacci (ex: 7 f -> 13)
+ * p: Número é primo?  (ex: 4 p     -> 0)
+ */
 
 #include <stdio.h>
 #include <string.h>
@@ -38,7 +50,7 @@ int main(int argc, char **argv)
   } else {
     fatal_error("Utilização: cnpf [-q]");
   }
-  
+
   while (true) {
     /* Obtenha a expressão aritmética do usuário. */
     expression = get_user_line(&expression_length);
@@ -75,6 +87,9 @@ int main(int argc, char **argv)
       puts("Expressão convencional: ((4 * 2) - (5 * 2)) / (2 * -1)");
       puts("Expressão 'cnpf':       4 2 * 5 2 * - 2 -1 * /");
       putchar('\n');
+      puts("Expressão convencional: 2 ^ 3");
+      puts("Expressão 'cnpf':       2 3 ^");
+      putchar('\n');
       puts("Note que na notação pós-fixada não é usado parênteses.");
       puts("Obs: neste programa, espaços entre operandos ou operadores são obrigatórios!\n");
       continue;
@@ -87,6 +102,6 @@ int main(int argc, char **argv)
       puts("<Erro de sintaxe>");
     }
   }
-  
+
   return 0;
 }
