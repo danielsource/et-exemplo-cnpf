@@ -91,6 +91,31 @@ static bool calc_exp2_(void)
  *   operator   ::= "+" | "-" | "*" | "/"
  *   integer    ::= "-"? ("0" | [1-9] [0-9]*)
  */
+
+static bool calc_fact_(void)
+{
+    long x, result = 1;
+
+    // Tente retirar o número da pilha
+    if (!calc_pop(&x)) {
+        return false;
+    }
+
+    // Retorne erro para números negativos
+    if (x < 0) {
+        return false;
+    }
+
+    // Calcule o fatorial
+    for (long i = 1; i <= x; ++i) {
+        result *= i;
+    }
+
+    // Empurre o resultado de volta na pilha
+    return calc_push(result);
+}
+
+
 bool calc(const char *expression, long *value)
 {
   const char *s;
@@ -140,6 +165,8 @@ bool calc(const char *expression, long *value)
     case '*': if (!calc_mul2_()) return false; break;
     case '/': if (!calc_div2_()) return false; break;
     case '^': if (!calc_exp2_()) return false; break;
+    case '!': if (!calc_fact_()) return false; break;
+
     default: /* Finalize com erro em um caractere inesperado: */ return false;
     }
 
@@ -159,3 +186,4 @@ bool calc(const char *expression, long *value)
   /* Tente retirar o último elemento da pilha, passando o valor para 'value': */
   return calc_pop(value);
 }
+

@@ -1,26 +1,25 @@
 const char *const banner =
-  "cnpf: calculadora em notaÃ§Ã£o pÃ³s-fixada\n"
+  "cnpf: calculadora em notação pós-fixada\n"
   "==========================================\n"
-  "'cnpf' Ã© uma simples calculadora de linha\n"
-  "de comando que implementa as operaÃ§Ãµes\n"
-  "aritmÃ©ticas (+ - * / ^ ? ? ? ? ?) em\n"
-  "inteiros na notaÃ§Ã£o pÃ³s-fixada (tambÃ©m\n"
+  "'cnpf' é uma simples calculadora de linha\n"
+  "de comando que implementa as operações\n"
+  "aritméticas (+ - * / ^ ! ? ? ? ?) em\n"
+  "inteiros na notação pós-fixada (também\n"
   "(conhecida como 'Reverse Polish Notation).\n"
   "==========================================\n"
   "DIGITE 'q' PARA SAIR | DIGITE 'e' PARA EXEMPLOS"
 ;
 
-/* SUGESTÃƒO DE NOVOS OPERADORES:
- * !: Fatorial         (ex: 5 !     -> 120)
- * ~: NegaÃ§Ã£o          (ex: 5 ~     -> -5)
+/* SUGESTÃO DE NOVOS OPERADORES:
+ * ~: Negação          (ex: 5 ~     -> -5)
  * #: Raiz quadrada    (ex: 9 #     -> 3)
- * %: MÃ³dulo (resto)   (ex: 10 % 3  -> 1)
+ * %: Módulo (resto)   (ex: 10 % 3  -> 1)
  * <: Menor que        (ex: 3 5 <   -> 1)
  * >: Maior que        (ex: 3 5 >   -> 0)
  * =: Igual a          (ex: 7 7 =   -> 1)
- * @: MÃ©dia de dois n. (ex: 10 20 @ -> 15)
- * f: EnÃ©simo n. Fibonacci (ex: 7 f -> 13)
- * p: NÃºmero Ã© primo?  (ex: 4 p     -> 0)
+ * @: Média de dois n. (ex: 10 20 @ -> 15)
+ * f: Enésimo n. Fibonacci (ex: 7 f -> 13)
+ * p: Número é primo?  (ex: 4 p     -> 0)
  */
 
 #include <stdio.h>
@@ -41,57 +40,57 @@ int main(int argc, char **argv)
   long value;
   int i;
 
-  setlocale(LC_ALL, "");
+  setlocale(LC_ALL, "Portuguese");
 
   if (argc == 2 && strcmp(argv[1], "-q") == 0) {
-    /* Desativar 'banner' inicial ao passar a opÃ§Ã£o "-q". */
+    /* Desativar 'banner' inicial ao passar a opção "-q". */
   } else if (argc < 2) {
     puts(banner);
   } else {
-    fatal_error("UtilizaÃ§Ã£o: cnpf [-q]");
+    fatal_error("Utilização: cnpf [-q]");
   }
 
   while (true) {
-    /* Obtenha a expressÃ£o aritmÃ©tica do usuÃ¡rio. */
+    /* Obtenha a expressão aritmética do usuário. */
     expression = get_user_line(&expression_length);
 
-    /* Remova espaÃ§os desnecessÃ¡rios no *inÃ­cio* da expressÃ£o. */
+    /* Remova espaços desnecessários no *início* da expressão. */
     while (expression[0] == ' ') {
       ++expression;
       --expression_length;
     }
 
-    /* Remova espaÃ§os desnecessÃ¡rios no *final* da expressÃ£o. */
+    /* Remova espaços desnecessários no *final* da expressão. */
     for (i = expression_length-1; expression[i] == ' '; --i) {
       expression[i] = '\0';
       --expression_length;
     }
 
-    /* Se usuÃ¡rio nÃ£o digitar nada, prossiga para a prÃ³xima leitura. */
+    /* Se usuário não digitar nada, prossiga para a próxima leitura. */
     if (expression_length == 0) {
       continue;
     }
-    /* Se usuÃ¡rio digitar 'q', finalize o programa (quit). */
+    /* Se usuário digitar 'q', finalize o programa (quit). */
     else if (strcmp(expression, "q") == 0) {
       break;
     }
-    /* Se usuÃ¡rio digitar 'e', exiba exemplos da calculadora. */
+    /* Se usuário digitar 'e', exiba exemplos da calculadora. */
     else if (strcmp(expression, "e") == 0) {
       putchar('\n');
-      puts("ExpressÃ£o convencional: 2 + 2");
-      puts("ExpressÃ£o 'cnpf':       2 2 +");
+      puts("Expressão convencional: 2 + 2");
+      puts("Expressão 'cnpf':       2 2 +");
       putchar('\n');
-      puts("ExpressÃ£o convencional: (4 + 6) / 2");
-      puts("ExpressÃ£o 'cnpf':       4 6 + 2 /");
+      puts("Expressão convencional: (4 + 6) / 2");
+      puts("Expressão 'cnpf':       4 6 + 2 /");
       putchar('\n');
-      puts("ExpressÃ£o convencional: ((4 * 2) - (5 * 2)) / (2 * -1)");
-      puts("ExpressÃ£o 'cnpf':       4 2 * 5 2 * - 2 -1 * /");
+      puts("Expressão convencional: ((4 * 2) - (5 * 2)) / (2 * -1)");
+      puts("Expressão 'cnpf':       4 2 * 5 2 * - 2 -1 * /");
       putchar('\n');
-      puts("ExpressÃ£o convencional: 2 ^ 3");
-      puts("ExpressÃ£o 'cnpf':       2 3 ^");
+      puts("Expressão convencional: 2 ^ 3");
+      puts("Expressão 'cnpf':       2 3 ^");
       putchar('\n');
-      puts("Note que na notaÃ§Ã£o pÃ³s-fixada nÃ£o Ã© usado parÃªnteses.");
-      puts("Obs: neste programa, espaÃ§os entre operandos ou operadores sÃ£o obrigatÃ³rios!\n");
+      puts("Note que na notação pós-fixada não é usado parênteses.");
+      puts("Obs: neste programa, espaços entre operandos ou operadores são obrigatórios!\n");
       continue;
     }
 

@@ -16,3 +16,4 @@ Veja os exemplos ao executar o programa com `./cpnf` ou `.\cnpf.exe` dependendo 
 
 - [Daniel de Lima Franceschetti](https://github.com/danielsource)
 - [Douglas Benevides Almeida](https://github.com/almdoug)
+- [César Rebouças Costa](https://github.com/cesarrcosta99)
