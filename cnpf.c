@@ -1,13 +1,12 @@
 const char *const banner =
   "cnpf: calculadora em notação pós-fixada\n"
-  "=======================================\n"
-  "'cnpf' é uma simples calculadora de\n"
-  "linha de comando que implementa as\n"
-  "operações aritméticas (+ - * / ^)\n"
-  "em inteiros na notação pós-fixada\n"
-  "(também conhecida como 'Reverse Polish\n"
-  "Notation').\n"
-  "=======================================\n"
+  "==========================================\n"
+  "'cnpf' é uma simples calculadora de linha\n"
+  "de comando que implementa as operações\n"
+  "aritméticas (+ - * / ^ ? ? ? ? ?) em\n"
+  "inteiros na notação pós-fixada (também\n"
+  "(conhecida como 'Reverse Polish Notation).\n"
+  "==========================================\n"
   "DIGITE 'q' PARA SAIR | DIGITE 'e' PARA EXEMPLOS"
 ;
 
@@ -38,7 +37,7 @@ int main(int argc, char **argv)
   } else {
     fatal_error("Utilização: cnpf [-q]");
   }
-  
+
   while (true) {
     /* Obtenha a expressão aritmética do usuário. */
     expression = get_user_line(&expression_length);
@@ -90,6 +89,6 @@ int main(int argc, char **argv)
       puts("<Erro de sintaxe>");
     }
   }
-  
+
   return 0;
 }

@@ -9,39 +9,49 @@
 static bool calc_add2_(void)
 {
   long x, y;
+
   if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
+
   return calc_push(x + y);
 }
 
 static bool calc_sub2_(void)
 {
   long x, y;
+
   if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
+
   return calc_push(x - y);
 }
 
 static bool calc_mul2_(void)
 {
   long x, y;
+
   if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
+
   return calc_push(x * y);
 }
 
 static bool calc_div2_(void)
 {
   long x, y;
+
   if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
+
+  /* Se o denominador for zero, retorne erro. */
   if (y == 0) {
     return false;
   }
+
   return calc_push(x / y);
 }
 
@@ -49,22 +59,22 @@ static bool calc_exp2_(void)
 {
   long x, y;
   long result = 1;
-  
+
   if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
-  
-  // Se o expoente for negativo, retorna erro
+
+  /* Se o expoente for negativo, retorne erro. */
   if (y < 0) {
     return false;
   }
-  
-  // Calcula x^y
+
+  /* Calcule x^y. */
   while (y > 0) {
     result *= x;
     y--;
   }
-  
+
   return calc_push(result);
 }
 
