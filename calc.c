@@ -47,7 +47,6 @@ static bool calc_div2_(void)
     return false;
   }
 
-  /* Se o denominador for zero, retorne erro. */
   if (y == 0) {
     return false;
   }
@@ -58,24 +57,42 @@ static bool calc_div2_(void)
 static bool calc_exp2_(void)
 {
   long x, y;
-  long result = 1;
+  long power = 1;
 
   if (!calc_pop(&y) || !calc_pop(&x)) {
     return false;
   }
 
-  /* Se o expoente for negativo, retorne erro. */
   if (y < 0) {
     return false;
   }
 
-  /* Calcule x^y. */
   while (y > 0) {
-    result *= x;
+    power *= x;
     y--;
   }
 
-  return calc_push(result);
+  return calc_push(power);
+}
+
+static bool calc_fac1_(void)
+{
+    long x, i;
+    long factorial = 1;
+
+    if (!calc_pop(&x)) {
+        return false;
+    }
+
+    if (x < 0) {
+        return false;
+    }
+
+    for (i = 1; i <= x; ++i) {
+        factorial *= i;
+    }
+
+    return calc_push(factorial);
 }
 
 /* A função 'calc' recebe uma cadeia de caracteres de uma expressão e um
@@ -135,11 +152,14 @@ bool calc(const char *expression, long *value)
 
     /* Tente computar uma operação: */
     switch (s[0]) {
+    /* As operações são dessa forma:
+     *             calc_[nome][aridade]_ */
     case '+': if (!calc_add2_()) return false; break;
     case '-': if (!calc_sub2_()) return false; break;
     case '*': if (!calc_mul2_()) return false; break;
     case '/': if (!calc_div2_()) return false; break;
     case '^': if (!calc_exp2_()) return false; break;
+    case '!': if (!calc_fac1_()) return false; break;
     default: /* Finalize com erro em um caractere inesperado: */ return false;
     }
 
