@@ -10,6 +10,19 @@ const char *const banner =
   "DIGITE 'q' PARA SAIR | DIGITE 'e' PARA EXEMPLOS"
 ;
 
+/* SUGESTÃO DE NOVOS OPERADORES:
+ * !: Fatorial         (ex: 5 !     -> 120)
+ * ~: Negação          (ex: 5 ~     -> -5)
+ * #: Raiz quadrada    (ex: 9 #     -> 3)
+ * %: Módulo (resto)   (ex: 10 % 3  -> 1)
+ * <: Menor que        (ex: 3 5 <   -> 1)
+ * >: Maior que        (ex: 3 5 >   -> 0)
+ * =: Igual a          (ex: 7 7 =   -> 1)
+ * @: Média de dois n. (ex: 10 20 @ -> 15)
+ * f: Enésimo n. Fibonacci (ex: 7 f -> 13)
+ * p: Número é primo?  (ex: 4 p     -> 0)
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
