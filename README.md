@@ -15,3 +15,4 @@ Veja os exemplos ao executar o programa com `./cpnf` ou `.\cnpf.exe` dependendo 
 ## Desenvolvedores (grupo 5, subgrupo 0)
 
 - [Daniel de Lima Franceschetti](https://github.com/danielsource)
+- [Douglas Benevides Almeida](https://github.com/almdoug)

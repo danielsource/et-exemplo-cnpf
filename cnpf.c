@@ -2,8 +2,8 @@ const char *const banner =
   "cnpf: calculadora em notação pós-fixada\n"
   "=======================================\n"
   "'cnpf' é uma simples calculadora de\n"
-  "linha de comando que implementa as 4\n"
-  "operações aritméticas básicas (+ - * /)\n"
+  "linha de comando que implementa as\n"
+  "operações aritméticas (+ - * / ^)\n"
   "em inteiros na notação pós-fixada\n"
   "(também conhecida como 'Reverse Polish\n"
   "Notation').\n"
@@ -74,6 +74,9 @@ int main(int argc, char **argv)
       putchar('\n');
       puts("Expressão convencional: ((4 * 2) - (5 * 2)) / (2 * -1)");
       puts("Expressão 'cnpf':       4 2 * 5 2 * - 2 -1 * /");
+      putchar('\n');
+      puts("Expressão convencional: 2 ^ 3");
+      puts("Expressão 'cnpf':       2 3 ^");
       putchar('\n');
       puts("Note que na notação pós-fixada não é usado parênteses.");
       puts("Obs: neste programa, espaços entre operandos ou operadores são obrigatórios!\n");

@@ -45,6 +45,29 @@ static bool calc_div2_(void)
   return calc_push(x / y);
 }
 
+static bool calc_exp2_(void)
+{
+  long x, y;
+  long result = 1;
+  
+  if (!calc_pop(&y) || !calc_pop(&x)) {
+    return false;
+  }
+  
+  // Se o expoente for negativo, retorna erro
+  if (y < 0) {
+    return false;
+  }
+  
+  // Calcula x^y
+  while (y > 0) {
+    result *= x;
+    y--;
+  }
+  
+  return calc_push(result);
+}
+
 /* A função 'calc' recebe uma cadeia de caracteres de uma expressão e um
  * ponteiro para um inteiro usado para armazenar o valor do cálculo.
  * Retorna 'true' se realizar o cálculo corretamente e 'false' ao encontrar
@@ -106,6 +129,7 @@ bool calc(const char *expression, long *value)
     case '-': if (!calc_sub2_()) return false; break;
     case '*': if (!calc_mul2_()) return false; break;
     case '/': if (!calc_div2_()) return false; break;
+    case '^': if (!calc_exp2_()) return false; break;
     default: /* Finalize com erro em um caractere inesperado: */ return false;
     }
 
