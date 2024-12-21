@@ -186,4 +186,3 @@ bool calc(const char *expression, long *value)
   /* Tente retirar o último elemento da pilha, passando o valor para 'value': */
   return calc_pop(value);
 }
-
